@@ -4,10 +4,10 @@ import PyQt5
 
 
 def format_clipboard_query(value):
-    return ", ".join(repr(s) for s in value.split("\r\n"))
+    return ", ".join(repr(s) for s in value.split("\n"))
 
 
 value = st.text_area('Enter values to modify')
 
 if st.button('Modify'):
-    st.write('Output:', format_clipboard_query(value))
+    st.write(format_clipboard_query(value))
