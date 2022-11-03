@@ -2,6 +2,11 @@ import pyperclip
 import streamlit as st
 import PyQt5
 
+st.set_page_config(
+    title="SQL Formatter",
+    favicon=":shark:"
+)
+
 
 def format_clipboard_query(value):
     return ", ".join(repr(s) for s in value.split("\n"))
