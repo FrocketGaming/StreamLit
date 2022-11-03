@@ -1,9 +1,11 @@
-import pyperclip
 import streamlit as st
+import pyperclip
+import io
 
 
 def format_clipboard_query():
-    return ", ".join(repr(s) for s in pyperclip.paste().split("\r\n"))
+    return ", ".join(
+        repr(s.strip()) for s in io.StringIO(pyperclip.paste()))
 
 
 if st.button('Covert Clipboard'):
