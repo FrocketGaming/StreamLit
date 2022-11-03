@@ -7,5 +7,7 @@ def format_clipboard_query():
     return ", ".join(repr(s) for s in pyperclip.paste().split("\r\n"))
 
 
-if st.button('Copy to Clipboard'):
-    format_clipboard_query()
+st.text_input('Enter values to modify')
+
+if st.button('Modify'):
+    st.write('Output:', format_clipboard_query())
