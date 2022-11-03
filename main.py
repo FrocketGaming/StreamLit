@@ -3,8 +3,7 @@ import streamlit as st
 import PyQt5
 
 st.set_page_config(
-    title="SQL Formatter",
-    favicon=":shark:"
+    page_title="=SQL Formatter",
 )
 
 
