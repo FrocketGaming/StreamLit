@@ -8,4 +8,4 @@ def format_clipboard_query(paste):
 
 paste = st.text_input('Paste Your Values', '')
 
-format_clipboard_query(paste)
+if st.button(label='Value', format_clipboard_query(paste))
