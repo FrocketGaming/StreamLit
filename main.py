@@ -1,14 +1,17 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 import pandas as pd
+import os
 
 st.set_page_config(
     page_title="SQL Formatter",
-    page_icon=":shark:"
-)
+    page_icon=":shark:")
 
-st.markdown(
-    "<style>.token.string {color: #f8f8f2 !important;}</style>", unsafe_allow_html=True)
+
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
 
 with st.container():
     def column_formatter():
@@ -30,6 +33,8 @@ with st.container():
             st.code(format_sql(user_text, checked))
 
 
+local_css("streamlit.css")
+
 selected = option_menu(
     menu_title=None,
     options=["SQL Formatter", "Ftr Feature",
@@ -41,23 +46,25 @@ selected = option_menu(
     styles={
         "container": {"padding": "0px",
                       "display": "grid",
-                      "margin": "0!important"
+                      "margin": "0!important",
+                      "background-color": "#23212c"
                       },
-        "icon": {"color": "#f1fa8c", "font-size": "14px"},
+        "icon": {"color": "#8bff80", "font-size": "14px"},
         "nav-link": {
             "font-size": "14px",
             "text-align": "center",
             "margin": "auto",
-            "background-color": "#282a36",
+            "background-color": "#23212c",
             "height": "30px",
-            "color": "#6272a4",
-            "border-radius": "0px"
+            "width": "13rem",
+            "color": "#7970a9",
+            "border-radius": "5px"
         },
         "nav-link-selected": {
-            "background-color": "#282a36",
+            "background-color": "#454158",
             "font-weight": "300",
-            "color": "#f8f8f2",
-            "border": "1px solid #ff79c6"
+            "color": "#f7f8f2",
+            "border": "1px solid #fe80bf"
         }
     }
 )
@@ -66,3 +73,16 @@ if selected == "SQL Formatter":
     column_formatter()
 if selected == "Ftr Feature":
     pass
+
+
+# Background Color - #23212c
+# Comment Color - #7970a9
+# Selection Color - #454148
+# Foreground Color - #f7f8f2
+# Cyan Color - #80ffea
+# Green Color - #8bff80
+# Orange Color - #ffc97f
+# Pink Color - #fe80bf
+# Purple Color - #9580FF
+# Red Color - #fe947f
+# Yellow Color - #ffff80
