@@ -24,7 +24,7 @@ with st.container():
         if st.checkbox("Add Parathesis"):
             checked = True
         if st.button('Modify'):
-            st.write(format_sql(user_text, checked))
+            st.code(format_sql(user_text, checked))
 
 
 selected = option_menu(
