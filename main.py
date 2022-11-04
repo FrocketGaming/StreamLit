@@ -11,9 +11,9 @@ with st.container():
     def column_formatter():
         def format_sql(user_text, checked):
             if checked == True:
-                return "(" + ", ".join(repr(s) for s in user_text.split("\n")) + ")"
+                return "(" + ", ".join(repr(s) for s in user_text.split()) + ")"
             elif checked == False:
-                return ", ".join(repr(s) for s in user_text.replace(',', "").split("\n"))
+                return ", ".join(repr(s) for s in user_text.replace(',', "").split())
 
         st.header("Column Formatter")
 
