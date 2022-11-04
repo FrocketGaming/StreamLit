@@ -1,5 +1,6 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
+import pandas as pd
 
 st.set_page_config(
     page_title="SQL Formatter",
@@ -47,6 +48,7 @@ selected = option_menu(
             "background-color": "#282a36",
             "height": "30px",
             "color": "#6272a4",
+            "border-radius": "0px"
         },
         "nav-link-selected": {
             "background-color": "#282a36",
