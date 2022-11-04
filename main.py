@@ -1,18 +1,63 @@
-import pyperclip
 import streamlit as st
-import PyQt5
+from streamlit_option_menu import option_menu
 
 st.set_page_config(
     page_title="SQL Formatter",
     page_icon=":shark:"
 )
 
+with st.container():
+    def column_formatter():
+        def format_sql(user_text, checked):
+            if checked == True:
+                return "(" + ", ".join(repr(s) for s in user_text.split("\n")) + ")"
+            elif checked == False:
+                return ", ".join(repr(s) for s in user_text.split("\n"))
 
-def format_clipboard_query(value):
-    return ", ".join(repr(s) for s in value.split("\n"))
+        st.header("Column Formatter")
+
+        user_text = st.text_area(
+            'Enter the data you wish to modify', height=500)
+
+        checked = False
+        if st.checkbox("Add Parathesis"):
+            checked = True
+        if st.button('Modify'):
+            st.write(format_sql(user_text, checked))
 
 
-value = st.text_area('Enter values to modify', height=500)
+selected = option_menu(
+    menu_title=None,
+    options=["Column Formatter", "Ftr Feature",
+             "Ftr Feature"],
+    icons=["columns", "bricks", "bricks"],
+    menu_icon="cast",
+    default_index=0,
+    orientation="horizontal",
+    styles={
+        "container": {"padding": "0px",
+                      "display": "grid",
+                      "margin": "0!important"
+                      },
+        "icon": {"color": "#f1fa8c", "font-size": "14px"},
+        "nav-link": {
+            "font-size": "14px",
+            "text-align": "center",
+            "margin": "auto",
+            "background-color": "#282a36",
+            "height": "30px",
+            "color": "#6272a4",
+        },
+        "nav-link-selected": {
+            "background-color": "#282a36",
+            "font-weight": "300",
+            "color": "#f8f8f2",
+            "border": "1px solid #ff79c6"
+        }
+    }
+)
 
-if st.button('Modify'):
-    st.write(format_clipboard_query(value))
+if selected == "Column Formatter":
+    column_formatter()
+if selected == "Ftr Feature":
+    pass
