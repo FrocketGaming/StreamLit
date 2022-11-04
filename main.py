@@ -7,6 +7,9 @@ st.set_page_config(
     page_icon=":shark:"
 )
 
+st.markdown(
+    "<style>.token.string {color: #f8f8f2 !important;}</style>", unsafe_allow_html=True)
+
 with st.container():
     def column_formatter():
         def format_sql(user_text, checked):
