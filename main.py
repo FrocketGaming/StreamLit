@@ -13,7 +13,7 @@ with st.container():
             if checked == True:
                 return "(" + ", ".join(repr(s) for s in user_text.split("\n")) + ")"
             elif checked == False:
-                return ", ".join(repr(s) for s in user_text.split("\n"))
+                return ", ".join(repr(s) for s in user_text.replace(',', "").split("\n"))
 
         st.header("Column Formatter")
 
