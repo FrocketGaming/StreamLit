@@ -15,7 +15,7 @@ with st.container():
             elif checked == False:
                 return ", ".join(repr(s) for s in user_text.replace(',', "").split())
 
-        st.header("Column Formatter")
+        st.header("SQL Formatter")
 
         user_text = st.text_area(
             'Enter the data you wish to modify', height=500)
@@ -29,7 +29,7 @@ with st.container():
 
 selected = option_menu(
     menu_title=None,
-    options=["Column Formatter", "Ftr Feature",
+    options=["SQL Formatter", "Ftr Feature",
              "Ftr Feature"],
     icons=["columns", "bricks", "bricks"],
     menu_icon="cast",
@@ -59,7 +59,7 @@ selected = option_menu(
     }
 )
 
-if selected == "Column Formatter":
+if selected == "SQL Formatter":
     column_formatter()
 if selected == "Ftr Feature":
     pass
