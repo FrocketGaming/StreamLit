@@ -2,6 +2,8 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import pandas as pd
 import json
+from sql_formatter.core import format_sql
+from st_btn_select import st_btn_select
 
 st.set_page_config(
     page_title="SQL Formatter",
@@ -15,7 +17,7 @@ def local_css(file_name):
 
 with st.container():
     def column_formatter():
-        def format_sql(user_text, checked):
+        def sql_data_format(user_text, checked):
             if checked == True:
                 return "(" + ", ".join(repr(s) for s in user_text.replace(',', "").split()) + ")"
             elif checked == False:
@@ -24,22 +26,24 @@ with st.container():
         st.header("SQL Formatter")
 
         user_text = st.text_area(
-            'Enter column data or a series of data you wish to format', height=500, placeholder="""Data, Data, Data
-
-OR
-
-Data
-Data
-Data""")
+            'Enter column data or a series of data you wish to format', height=500)
 
         checked = False
         if st.checkbox("Add Parathesis"):
             checked = True
-        if st.button('Modify'):
-            try:
-                st.code(format_sql(user_text, checked))
-            except:
-                st.text("Error: Please provide data for formatting.")
+
+        selection = st.radio('', ("Format Data", "Format Query"))
+
+        # selection = st_btn_select(('Format Data', 'Format Query'))
+
+        if st.button('Run'):
+            if selection == "Format Data":
+                try:
+                    st.code(sql_data_format(user_text, checked))
+                except:
+                    st.text("Error: Please provide data for formatting.")
+            elif selection == "Format Query":
+                st.code(format_sql(user_text))
 
     def json_formatter():
         def pretty_json(text):
