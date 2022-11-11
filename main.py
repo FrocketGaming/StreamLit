@@ -24,13 +24,13 @@ with st.container():
         st.header("SQL Formatter")
 
         user_text = st.text_area(
-            'Enter column data or a series of data you wish to format', height=500, placeholder="""Example Date, Example Data, Example Data
+            'Enter column data or a series of data you wish to format', height=500, placeholder="""Data, Data, Data
 
 OR
 
-Example Data
-Example Data
-Example Data""")
+Data
+Data
+Data""")
 
         checked = False
         if st.checkbox("Add Parathesis"):
