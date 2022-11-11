@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 import pandas as pd
-import os
+import json
 
 st.set_page_config(
     page_title="SQL Formatter",
@@ -24,20 +24,44 @@ with st.container():
         st.header("SQL Formatter")
 
         user_text = st.text_area(
-            'Enter the data you wish to modify', height=500)
+            'Enter column data or a series of data you wish to format', height=500, placeholder="""Example Date, Example Data, Example Data
+
+OR
+
+Example Data
+Example Data
+Example Data""")
 
         checked = False
         if st.checkbox("Add Parathesis"):
             checked = True
         if st.button('Modify'):
-            st.code(format_sql(user_text, checked))
+            try:
+                st.code(format_sql(user_text, checked))
+            except:
+                st.text("Error: Please provide data for formatting.")
 
+    def json_formatter():
+        def pretty_json(text):
+            text = json.loads(text)
+            return json.dumps(text, indent=4, sort_keys=True)
+
+        st.header("JSON Formatter")
+
+        user_text = st.text_area(
+            'Paste the JSON data to format', height=500, placeholder="""[{"id":11111,"name":"Data","Codes":["Text","Text","Text"],"bool":true}]""")
+
+        if st.button('Format'):
+            try:
+                st.code(pretty_json(user_text))
+            except:
+                st.text("Error: Please provide JSON data.")
 
 local_css("streamlit.css")
 
 selected = option_menu(
     menu_title=None,
-    options=["SQL Formatter", "Ftr Feature",
+    options=["SQL Formatter", "JSON Formatter",
              "Ftr Feature"],
     icons=["columns", "bricks", "bricks"],
     menu_icon="cast",
@@ -71,6 +95,8 @@ selected = option_menu(
 
 if selected == "SQL Formatter":
     column_formatter()
+elif selected == "JSON Formatter":
+    json_formatter()
 if selected == "Ftr Feature":
     pass
 
