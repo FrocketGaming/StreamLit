@@ -3,6 +3,8 @@ from streamlit_option_menu import option_menu
 import pandas as pd
 import json
 from sql_formatter.core import format_sql
+# import sqlparse
+import re
 from st_btn_select import st_btn_select
 
 st.set_page_config(
@@ -23,18 +25,24 @@ with st.container():
             elif checked == False:
                 return ", ".join(repr(s) for s in user_text.replace(',', "").split())
 
+        def java_extract(user_text):
+            new_text = """"""
+            for line in user_text.splitlines():
+                new_text += re.sub('^\+', '',
+                                   line).replace('"', '').replace('sql =', '')
+            return new_text
+
         st.header("SQL Formatter")
 
         user_text = st.text_area(
-            'Enter column data or a series of data you wish to format', height=500)
+            'Enter data or a query to format', height=500)
 
         checked = False
         if st.checkbox("Add Parathesis"):
             checked = True
 
-        selection = st.radio('', ("Format Data", "Format Query"))
-
-        # selection = st_btn_select(('Format Data', 'Format Query'))
+        selection = st.radio(
+            'None', ("Format Data", "Format Query", "Remove Java"), label_visibility='hidden')
 
         if st.button('Run'):
             if selection == "Format Data":
@@ -42,6 +50,8 @@ with st.container():
                     st.code(sql_data_format(user_text, checked))
                 except:
                     st.text("Error: Please provide data for formatting.")
+            elif selection == "Remove Java":
+                st.code(format_sql(java_extract(user_text)))
             elif selection == "Format Query":
                 st.code(format_sql(user_text))
 
