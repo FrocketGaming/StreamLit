@@ -54,7 +54,7 @@ with st.container():
             'Enter data or a query to format', height=500)
 
         checked = False
-        if st.checkbox("Add Parathesis (Only for Format Data"):
+        if st.checkbox("Add Parathesis (Only for Format Data)"):
             checked = True
 
         selection = st.radio(
