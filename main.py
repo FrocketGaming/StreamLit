@@ -38,13 +38,13 @@ with st.container():
                 user_text = user_text.split('\n', 1)[-1]
                 new_text = """"""
                 for line in user_text.splitlines():
-                    new_text += re.sub('\s\s\s\s.append[(]"', '',
+                    new_text += re.sub('^.*(.append.")', '',
                                        line).replace('")', '').replace('sql =', '')
             else:
                 new_text = """"""
 
                 for line in user_text.splitlines():
-                    new_text += re.sub('\s\s\s\s\+', '',
+                    new_text += re.sub('^.*(\+)', '',
                                        line).replace('"', '').replace('sql =', '')
             return new_text
 
