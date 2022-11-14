@@ -36,7 +36,7 @@ with st.container():
         def java_extract(user_text):
             new_text = """"""
             for line in user_text.splitlines():
-                new_text += re.sub('^\+', '',
+                new_text += re.sub('\s\s\s\s\+', '',
                                    line).replace('"', '').replace('sql =', '')
             return new_text
 
