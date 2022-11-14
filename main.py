@@ -23,7 +23,15 @@ with st.container():
             if checked == True:
                 return "(" + ", ".join(repr(s) for s in user_text.replace(',', "").split()) + ")"
             elif checked == False:
-                return ", ".join(repr(s) for s in user_text.replace(',', "").split())
+                updated_text = ", ".join(
+                    repr(s) for s in user_text.replace(',', "").split())
+
+                final_text = ""
+                for i, letter in enumerate(updated_text):
+                    if i % 80 == 0 and i != ',':
+                        final_text += '\n'
+                    final_text += letter
+                return final_text
 
         def java_extract(user_text):
             new_text = """"""
@@ -38,7 +46,7 @@ with st.container():
             'Enter data or a query to format', height=500)
 
         checked = False
-        if st.checkbox("Add Parathesis"):
+        if st.checkbox("Add Parathesis (Only for Format Data"):
             checked = True
 
         selection = st.radio(
