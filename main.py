@@ -60,14 +60,23 @@ def pretty_json(text):
 
 def sql_data_format(user_text, checked):
     if checked == True:
-        return "(" + ", ".join(repr(s) for s in user_text.replace(',', "").split()) + ")"
+        updated_text = "(" + ", ".join(repr(s)
+                                       for s in user_text.replace(',', "").split()) + ")"
+
+        final_text = ""
+        for i, letter in enumerate(updated_text):
+            if i % 38 == 0 and i != ',':
+                final_text += '\n'
+            final_text += letter
+        return final_text
+
     elif checked == False:
         updated_text = ", ".join(
             repr(s) for s in user_text.replace(',', "").split())
 
         final_text = ""
         for i, letter in enumerate(updated_text):
-            if i % 40 == 0 and i != ',':
+            if i % 38 == 0 and i != ',':
                 final_text += '\n'
             final_text += letter
         return final_text
