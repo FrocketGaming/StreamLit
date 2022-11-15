@@ -17,6 +17,8 @@ def local_css(file_name):
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 
+local_css("streamlit.css")
+
 with st.container():
     def column_formatter():
         def sql_data_format(user_text, checked):
@@ -51,7 +53,7 @@ with st.container():
         st.header("SQL Formatter")
 
         user_text = st.text_area(
-            'Enter data or a query to format', height=500)
+            'Enter a list of items to format for a SQL query, an entire query to format for readability,\nor java code containing a query to remove the java and format the query', height=500)
 
         checked = False
         if st.checkbox("Add Parathesis (Only for Format Data)"):
@@ -86,8 +88,6 @@ with st.container():
                 st.code(pretty_json(user_text))
             except:
                 st.text("Error: Please provide JSON data.")
-
-local_css("streamlit.css")
 
 selected = option_menu(
     menu_title=None,
