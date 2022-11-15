@@ -113,7 +113,7 @@ def json_formatter():
 
     with column[0]:
         user_text = st.text_area(
-            'json', height=450, placeholder="""[{"id":11111,"name":"Data","Codes":["Text","Text","Text"],"bool":true}]""", label_visibility='hidden')
+            'json', height=450, placeholder="Paste here", label_visibility='hidden')
 
         if st.button('Format'):
             try:
