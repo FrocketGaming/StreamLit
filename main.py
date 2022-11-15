@@ -3,7 +3,6 @@ from streamlit_option_menu import option_menu
 import pandas as pd
 import json
 from sql_formatter.core import format_sql
-# import sqlparse
 import re
 from st_btn_select import st_btn_select
 
@@ -18,76 +17,6 @@ def local_css(file_name):
 
 
 local_css("streamlit.css")
-
-with st.container():
-    def column_formatter():
-        def sql_data_format(user_text, checked):
-            if checked == True:
-                return "(" + ", ".join(repr(s) for s in user_text.replace(',', "").split()) + ")"
-            elif checked == False:
-                updated_text = ", ".join(
-                    repr(s) for s in user_text.replace(',', "").split())
-
-                final_text = ""
-                for i, letter in enumerate(updated_text):
-                    if i % 80 == 0 and i != ',':
-                        final_text += '\n'
-                    final_text += letter
-                return final_text
-
-        def java_extract(user_text):
-            if 'StringBuilder()' in user_text:
-                user_text = user_text.split('\n', 1)[-1]
-                new_text = """"""
-                for line in user_text.splitlines():
-                    new_text += re.sub('^.*(.append.")', '',
-                                       line).replace('")', '').replace('sql =', '')
-            else:
-                new_text = """"""
-
-                for line in user_text.splitlines():
-                    new_text += re.sub('^.*(\+)', '',
-                                       line).replace('"', '').replace('sql =', '')
-            return new_text
-
-        st.header("SQL Formatter")
-
-        user_text = st.text_area(
-            'Enter a list of items to format for a SQL query, an entire query to format for readability,\nor java code containing a query to remove the java and format the query', height=500)
-
-        checked = False
-        if st.checkbox("Add Parathesis (Only for Format Data)"):
-            checked = True
-
-        selection = st.radio(
-            'None', ("Format Data", "Format Query", "Remove Java"), label_visibility='hidden')
-
-        if st.button('Run'):
-            if selection == "Format Data":
-                try:
-                    st.code(sql_data_format(user_text, checked))
-                except:
-                    st.text("Error: Please provide data for formatting.")
-            elif selection == "Remove Java":
-                st.code(format_sql(java_extract(user_text)))
-            elif selection == "Format Query":
-                st.code(format_sql(user_text))
-
-    def json_formatter():
-        def pretty_json(text):
-            text = json.loads(text)
-            return json.dumps(text, indent=4, sort_keys=True)
-
-        st.header("JSON Formatter")
-
-        user_text = st.text_area(
-            'Paste the JSON data to format', height=500, placeholder="""[{"id":11111,"name":"Data","Codes":["Text","Text","Text"],"bool":true}]""")
-
-        if st.button('Format'):
-            try:
-                st.code(pretty_json(user_text))
-            except:
-                st.text("Error: Please provide JSON data.")
 
 selected = option_menu(
     menu_title=None,
@@ -123,22 +52,96 @@ selected = option_menu(
     }
 )
 
+
+def pretty_json(text):
+    text = json.loads(text)
+    return json.dumps(text, indent=4, sort_keys=True)
+
+
+def sql_data_format(user_text, checked):
+    if checked == True:
+        return "(" + ", ".join(repr(s) for s in user_text.replace(',', "").split()) + ")"
+    elif checked == False:
+        updated_text = ", ".join(
+            repr(s) for s in user_text.replace(',', "").split())
+
+        final_text = ""
+        for i, letter in enumerate(updated_text):
+            if i % 80 == 0 and i != ',':
+                final_text += '\n'
+            final_text += letter
+        return final_text
+
+
+def java_extract(user_text):
+    if 'StringBuilder()' in user_text:
+        user_text = user_text.split('\n', 1)[-1]
+        new_text = """"""
+        for line in user_text.splitlines():
+            new_text += re.sub('^.*(.append.")', '',
+                               line).replace('")', '').replace('sql =', '')
+    else:
+        new_text = """"""
+
+        for line in user_text.splitlines():
+            new_text += re.sub('^.*(\+)', '',
+                               line).replace('"', '').replace('sql =', '')
+    return new_text
+
+
+def json_formatter():
+
+    st.header("JSON Formatter")
+
+    st.caption('Paste the JSON data below to format')
+
+    column = st.columns(2)
+    with column[0]:
+        user_text = st.text_area(
+            'json', height=450, placeholder="""[{"id":11111,"name":"Data","Codes":["Text","Text","Text"],"bool":true}]""", label_visibility='hidden')
+
+        if st.button('Format'):
+            try:
+                with column[1]:
+                    st.code(pretty_json(user_text))
+            except:
+                st.text("Error: Please provide JSON data.")
+
+
+def column_formatter():
+    st.header("SQL Formatter")
+
+    st.caption("Enter a list of items to format for a SQL query, an entire query to format for readability,\nor java code containing a query to remove the java and format the query")
+    column = st.columns(2)
+
+    with column[0]:
+
+        user_text = st.text_area(
+            'txt', height=450, label_visibility='hidden')
+
+        checked = False
+        if st.checkbox("Add Parathesis (Only for Format Data)"):
+            checked = True
+
+        selection = st.radio(
+            'None', ("Format Data", "Format Query", "Remove Java"), label_visibility='hidden')
+
+    if st.button('Run'):
+        with column[1]:
+            if selection == "Format Data":
+                try:
+                    st.code(sql_data_format(user_text, checked))
+                except:
+                    st.text("Error: Please provide data for formatting.")
+            elif selection == "Remove Java":
+                st.code(format_sql(java_extract(user_text)))
+            elif selection == "Format Query":
+                st.code(format_sql(user_text))
+
+
 if selected == "SQL Formatter":
     column_formatter()
 elif selected == "JSON Formatter":
     json_formatter()
 if selected == "Ftr Feature":
     pass
-
-
-# Background Color - #23212c
-# Comment Color - #7970a9
-# Selection Color - #454148
-# Foreground Color - #f7f8f2
-# Cyan Color - #80ffea
-# Green Color - #8bff80
-# Orange Color - #ffc97f
-# Pink Color - #fe80bf
-# Purple Color - #9580FF
-# Red Color - #fe947f
-# Yellow Color - #ffff80

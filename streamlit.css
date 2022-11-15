@@ -1,11 +1,54 @@
+/* Background Color - #23212c
+Comment Color - #7970a9
+Selection Color - #454148
+Foreground Color - #f7f8f2
+Cyan Color - #80ffea
+Green Color - #8bff80
+Orange Color - #ffc97f
+Pink Color - #ff79c6
+Purple Color - #bd93f9
+Red Color - #ff5555
+Yellow Color - #ffff80 
+ALT Green - #a8c373 */
+
 .token.string {
   color: #f7f8f2 !important;
 }
 
-.st-bc.st-bx.st-by.st-bz.st-c0.st-c1.st-c2.st-c3.st-c4.st-c5.st-c6.st-b8.st-c7.st-c8.st-c9.st-ca.st-cb.st-cc.st-cd.st-ce.st-ae.st-af.st-ag.st-cf.st-ai.st-aj.st-bw.st-cg.st-ch.st-ci.st-cj.st-ck.st-cl {
-  color: #ffc97f !important;
-}
-
+/* Gap between radio buttons and checkbox */
 .css-na3cxl.effi0qh3 {
   display: none !important;
+}
+
+/* Body of container */
+.block-container.css-12oz5g7.egzxvld2 {
+  max-width: 65rem;
+  padding: 3rem 1rem 10rem;
+}
+
+/* code block text  */
+.css-4d0s2q {
+  height: 450px;
+  color: #a8c373;
+}
+
+/* copy button */
+.css-tj37xy.e10mrw3y2 {
+  color: #ff5555;
+}
+
+/* header */
+.css-1tceqde.e16nr0p34 {
+  padding-top: .5rem;
+  font-size: 14px;
+  color: #ffc97f;
+}
+
+/* Text area */
+/* .stTextArea {
+  padding-top: .6rem !important;
+} */
+
+div textarea {
+  color: #ffc97f !important;
 }
