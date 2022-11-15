@@ -67,7 +67,7 @@ def sql_data_format(user_text, checked):
 
         final_text = ""
         for i, letter in enumerate(updated_text):
-            if i % 80 == 0 and i != ',':
+            if i % 40 == 0 and i != ',':
                 final_text += '\n'
             final_text += letter
         return final_text
