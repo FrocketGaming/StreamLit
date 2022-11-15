@@ -105,13 +105,19 @@ def json_formatter():
     st.caption('Paste the JSON data below to format')
 
     column = st.columns(2)
+
+    with column[1]:
+        placeholder = st.empty()
+        with placeholder.container():
+            st.code('')
+
     with column[0]:
         user_text = st.text_area(
             'json', height=450, placeholder="""[{"id":11111,"name":"Data","Codes":["Text","Text","Text"],"bool":true}]""", label_visibility='hidden')
 
         if st.button('Format'):
             try:
-                with column[1]:
+                with placeholder.container():
                     st.code(pretty_json(user_text), language='json')
             except:
                 st.text("Error: Please provide JSON data.")
@@ -122,6 +128,11 @@ def column_formatter():
 
     st.caption("Enter a list of items to format for a SQL query, an entire query to format for readability,\nor java code containing a query to remove the java and format the query")
     column = st.columns(2)
+
+    with column[1]:
+        placeholder = st.empty()
+        with placeholder.container():
+            st.code('')
 
     with column[0]:
 
@@ -139,13 +150,17 @@ def column_formatter():
         with column[1]:
             if selection == "Format Data":
                 try:
-                    st.code(sql_data_format(user_text, checked), language='sql')
+                    with placeholder.container():
+                        st.code(sql_data_format(
+                            user_text, checked), language='sql')
                 except:
                     st.text("Error: Please provide data for formatting.")
             elif selection == "Remove Java":
-                st.code(format_sql(java_extract(user_text)), language='sql')
+                with placeholder.container():
+                    st.code(format_sql(java_extract(user_text)), language='sql')
             elif selection == "Format Query":
-                st.code(format_sql(user_text), language='sql')
+                with placeholder.container():
+                    st.code(format_sql(user_text), language='sql')
 
 
 if selected == "SQL Formatter":
