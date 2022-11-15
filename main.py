@@ -112,7 +112,7 @@ def json_formatter():
         if st.button('Format'):
             try:
                 with column[1]:
-                    st.code(pretty_json(user_text))
+                    st.code(pretty_json(user_text), language='json')
             except:
                 st.text("Error: Please provide JSON data.")
 
@@ -139,13 +139,13 @@ def column_formatter():
         with column[1]:
             if selection == "Format Data":
                 try:
-                    st.code(sql_data_format(user_text, checked))
+                    st.code(sql_data_format(user_text, checked), language='sql')
                 except:
                     st.text("Error: Please provide data for formatting.")
             elif selection == "Remove Java":
-                st.code(format_sql(java_extract(user_text)))
+                st.code(format_sql(java_extract(user_text)), language='sql')
             elif selection == "Format Query":
-                st.code(format_sql(user_text))
+                st.code(format_sql(user_text), language='sql')
 
 
 if selected == "SQL Formatter":

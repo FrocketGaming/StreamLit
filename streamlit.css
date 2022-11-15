@@ -12,7 +12,7 @@ Yellow Color - #ffff80
 ALT Green - #a8c373 */
 
 .token.string {
-  color: #f7f8f2 !important;
+  color: #ff79c6 !important;
 }
 
 /* Gap between radio buttons and checkbox */
@@ -30,6 +30,26 @@ ALT Green - #a8c373 */
 .css-4d0s2q {
   height: 450px;
   color: #a8c373;
+}
+
+.css-4d0s2q .token.property {
+  color: #bd93f9;
+}
+
+.css-4d0s2q .token.boolean {
+  color: #a8c373;
+}
+
+.css-4d0s2q .token.number {
+  color: #ffff80;
+}
+
+.css-4d0s2q .token.keyword {
+  color: #ff79c6;
+}
+
+.css-4d0s2q .token.punctuation {
+  color: #ff79c6;
 }
 
 /* copy button */
