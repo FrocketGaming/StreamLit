@@ -137,7 +137,7 @@ def column_formatter():
     with column[0]:
 
         user_text = st.text_area(
-            'txt', height=450, label_visibility='hidden')
+            'txt', height=450, placeholder='Paste here', label_visibility='hidden')
 
         checked = False
         if st.checkbox("Add Parathesis (Only for Format Data)"):

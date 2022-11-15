@@ -20,10 +20,11 @@ body {
   --Red: #ff5555;
   --Yellow: #ffff80;
   --Green: #a8c373;
+  --Grey: #808080;
 }
 
 .language-sql .token.string {
-  color: var(--Foreground) !important;
+  color: var(--Purple) !important;
 }
 
 .language-json .token.string {
@@ -32,6 +33,10 @@ body {
 
 /* Gap between radio buttons and checkbox */
 .css-na3cxl.effi0qh3 {
+  display: none !important;
+}
+
+.css-3vg9gg.effi0qh3 {
   display: none !important;
 }
 
@@ -88,6 +93,13 @@ body {
   padding-top: .6rem !important;
 } */
 
+/* Text area */
 div textarea {
-  color: var(--Bright-Green) !important;
+  color: var(--Foreground) !important;
+}
+
+/* Placeholder text */
+.st-cj::placeholder {
+  color: var(--Bright-Green);
+  opacity: .4;
 }
