@@ -46,11 +46,13 @@ body {
   padding: 3rem 1rem 10rem;
 }
 
-/* Menu width
-.element-container.css-xvtzic.e1tzin5v3 {
-  max-width: 45rem;
-  padding: 3rem 1rem 10rem;
-} */
+/* Menu width */
+iframe {
+  margin: auto;
+  width: 40rem;
+  align-self: revert;
+  display: grid;
+}
 
 /* code block text  */
 .css-4d0s2q {
