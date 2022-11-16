@@ -31,6 +31,10 @@ body {
   color: var(--Cyan);
 }
 
+h2 {
+  text-align: center;
+}
+
 /* Gap between radio buttons and checkbox */
 .css-na3cxl.effi0qh3 {
   display: none !important;
