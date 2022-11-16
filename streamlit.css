@@ -99,7 +99,7 @@ div textarea {
 }
 
 /* Placeholder text */
-.st-cj::placeholder {
+[class^="st-"]::placeholder {
   color: var(--Bright-Green);
   opacity: .4;
 }
