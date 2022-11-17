@@ -22,7 +22,7 @@ selected = option_menu(
     menu_title=None,
     options=["SQL Formatter", "JSON Formatter",
              "Ftr Feature"],
-    icons=["filetype-sql", "filetype-json", "bricks"],
+    icons=["sql", "filetype-json", "bricks"],
     menu_icon="cast",
     default_index=0,
     orientation="horizontal",
