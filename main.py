@@ -5,6 +5,7 @@ import json
 from sql_formatter.core import format_sql
 import re
 from st_btn_select import st_btn_select
+import textwrap
 
 st.set_page_config(
     page_title="SQL Formatter",
@@ -62,11 +63,10 @@ def sql_data_format(user_text, checked):
     if checked == True:
         updated_text = "(" + ", ".join(repr(s)
                                        for s in user_text.replace(',', "").split()) + ")"
-        return updated_text
-
+        return textwrap.fill(updated_text, 65)
         # final_text = ""
         # for i, letter in enumerate(updated_text):
-        #     if i % 54 == 0 and i != ',':
+        #     if i % 54 == 0 and i == ',':
         #         final_text += '\n'
         #     final_text += letter
         # return final_text
@@ -74,10 +74,10 @@ def sql_data_format(user_text, checked):
     elif checked == False:
         updated_text = ", ".join(
             repr(s) for s in user_text.replace(',', "").split())
-        return updated_text
+        return textwrap.fill(updated_text, 65)
         # final_text = ""
         # for i, letter in enumerate(updated_text):
-        #     if i % 54 == 0 and i != ',':
+        #     if len(i) >= 64 and i == ',':
         #         final_text += '\n'
         #     final_text += letter
         # return final_text
