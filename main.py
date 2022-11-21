@@ -62,24 +62,25 @@ def sql_data_format(user_text, checked):
     if checked == True:
         updated_text = "(" + ", ".join(repr(s)
                                        for s in user_text.replace(',', "").split()) + ")"
+        return updated_text
 
-        final_text = ""
-        for i, letter in enumerate(updated_text):
-            if i % 54 == 0 and i != ',':
-                final_text += '\n'
-            final_text += letter
-        return final_text
+        # final_text = ""
+        # for i, letter in enumerate(updated_text):
+        #     if i % 54 == 0 and i != ',':
+        #         final_text += '\n'
+        #     final_text += letter
+        # return final_text
 
     elif checked == False:
         updated_text = ", ".join(
             repr(s) for s in user_text.replace(',', "").split())
-
-        final_text = ""
-        for i, letter in enumerate(updated_text):
-            if i % 54 == 0 and i != ',':
-                final_text += '\n'
-            final_text += letter
-        return final_text
+        return updated_text
+        # final_text = ""
+        # for i, letter in enumerate(updated_text):
+        #     if i % 54 == 0 and i != ',':
+        #         final_text += '\n'
+        #     final_text += letter
+        # return final_text
 
 
 def java_extract(user_text):
