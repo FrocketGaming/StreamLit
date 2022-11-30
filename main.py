@@ -22,7 +22,7 @@ local_css("streamlit.css")
 selected = option_menu(
     menu_title=None,
     options=["SQL Formatter", "JSON Formatter",
-             "XML Formatter"],
+             "XML Formatter", "CRON Expressions"],
     icons=["code", "braces", "bricks"],
     menu_icon="cast",
     default_index=0,
