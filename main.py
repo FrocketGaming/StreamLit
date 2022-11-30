@@ -73,10 +73,11 @@ def sql_data_format(user_text, checked):
 
 def java_extract(user_text):
     if 'StringBuilder()' in user_text or '.append' in user_text:
-        user_text = user_text.split('\n', 1)[-1]
+        # user_text = user_text.split('\n', 1)[-1]
+        # print(user_text)
         new_text = """"""
         for line in user_text.splitlines():
-            new_text += re.sub('^.*(.append.")', '',
+            new_text += re.sub('^.*(append.")', '',
                                line).replace('")', '').replace('sql =', '')
     else:
         new_text = """"""
