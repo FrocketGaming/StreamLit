@@ -168,5 +168,5 @@ if selected == "SQL Formatter":
     column_formatter()
 elif selected == "JSON Formatter":
     json_formatter()
-if selected == "Ftr Feature":
+if selected == "XML Formatter":
     pass
