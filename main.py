@@ -88,7 +88,7 @@ def java_extract(user_text):
         user_text = user_text.split('\n', 1)[-1]
         new_text = """"""
         for line in user_text.splitlines():
-            new_text += re.sub('^.*(.append.")', '',
+            new_text += re.sub('.*(.append.")', '',
                                line).replace('")', '').replace('sql =', '')
     else:
         new_text = """"""
