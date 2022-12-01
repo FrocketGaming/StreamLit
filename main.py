@@ -6,6 +6,7 @@ from sql_formatter.core import format_sql
 import re
 from st_btn_select import st_btn_select
 import textwrap
+import xml.etree.ElementTree as ET
 
 st.set_page_config(
     page_title="SQL Formatter",
@@ -22,7 +23,7 @@ local_css("streamlit.css")
 selected = option_menu(
     menu_title=None,
     options=["SQL Formatter", "JSON Formatter",
-             "XML Formatter", "CRON Expressions"],
+             "XML Formatter", "CRON Placeholder"],
     icons=["code", "braces", "bricks"],
     menu_icon="cast",
     default_index=0,
@@ -55,8 +56,14 @@ selected = option_menu(
 
 
 def pretty_json(text):
-    text = json.loads(text)
-    return json.dumps(text, indent=4, sort_keys=True)
+    new_text = json.loads(text)
+    return json.dumps(new_text, indent=4, sort_keys=True)
+
+
+def pretty_xml(user_text):
+    new_text = ET.XML(user_text)
+    ET.indent(new_text)
+    return ET.tostring(new_text, encoding='unicode')
 
 
 def sql_data_format(user_text, checked):
@@ -88,8 +95,31 @@ def java_extract(user_text):
     return new_text
 
 
-def json_formatter():
+def xml_formatter():
+    st.header("XML Formatter")
 
+    st.caption('Paste the XML data below to format')
+
+    column = st.columns(2)
+
+    with column[1]:
+        placeholder = st.empty()
+        with placeholder.container():
+            st.code('')
+
+    with column[0]:
+        user_text = st.text_area(
+            'xml', height=450, placeholder="Paste here", label_visibility='hidden')
+
+        if st.button('Format'):
+            try:
+                with placeholder.container():
+                    st.code(pretty_xml(user_text), language='xml')
+            except:
+                st.text("Error: Please provide xml data.")
+
+
+def json_formatter():
     st.header("JSON Formatter")
 
     st.caption('Paste the JSON data below to format')
@@ -158,4 +188,4 @@ if selected == "SQL Formatter":
 elif selected == "JSON Formatter":
     json_formatter()
 if selected == "XML Formatter":
-    pass
+    xml_formatter()
