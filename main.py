@@ -90,8 +90,9 @@ def java_extract(user_text):
         new_text = """"""
 
         for line in user_text.splitlines():
-            new_text += re.sub('[String sql =]+[\'"\+]', '', line)
-            # Old Method '^.*(\+)'
+            new_text += re.sub('^.*(\+)', '',
+                               line).replace('"', '').replace('sql =', '')
+
     return new_text
 
 
@@ -177,8 +178,7 @@ def column_formatter():
                     st.text("Error: Please provide data for formatting.")
             elif selection == "Remove Java":
                 with placeholder.container():
-                    st.code(format_sql(java_extract(user_text)),
-                            language='sql')
+                    st.code(format_sql(java_extract(user_text)), language='sql')
             elif selection == "Format Query":
                 with placeholder.container():
                     st.code(format_sql(user_text), language='sql')
