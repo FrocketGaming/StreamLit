@@ -68,14 +68,24 @@ def pretty_xml(user_text):
 
 def sql_data_format(user_text, checked):
     if checked == True:
-        updated_text = "(" + ", ".join(repr(s)
-                                       for s in user_text.replace(',', "").split()) + ")"
-        return textwrap.fill(updated_text, 65)
+        if ', ' in user_text:
+            updated_text = "(" + ", ".join(repr(s)
+                                           for s in user_text.replace(',', "").split()) + ")"
+            return textwrap.fill(updated_text, 65)
+        else:
+            updated_text = "(" + ",".join(repr(s)
+                                          for s in user_text.replace(',', "").split()) + ")"
+            return textwrap.fill(updated_text, 65)
 
     elif checked == False:
-        updated_text = ", ".join(
-            repr(s) for s in user_text.replace(',', "").split())
-        return textwrap.fill(updated_text, 65)
+        if ', ' in user_text:
+            updated_text = ", ".join(
+                repr(s) for s in user_text.replace(',', "").split())
+            return textwrap.fill(updated_text, 65)
+        else:
+            updated_text = ",".join(epr(s)
+                                    for s in user_text.replace(',', "").split())
+            return textwrap.fill(updated_text, 65)
 
 
 def java_extract(user_text):
