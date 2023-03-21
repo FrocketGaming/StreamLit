@@ -96,8 +96,7 @@ def java_extract(user_text):
         new_text = """"""
 
         for line in user_text.splitlines():
-            new_text += re.sub(
-                '(String sql = ")|["]|^..\s\s+[+ "]', '', line, re.DOTALL)
+            new_text += re.sub('(String sql = ")|(?:\+ ")|(?:" \+)', '', line)
 
     return new_text
 
