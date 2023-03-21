@@ -87,7 +87,7 @@ def sql_data_format(user_text, checked):
 def java_extract(user_text):
     new_text = """"""
 
-    new_text += re.sub(r'[^"]*"([^"]*)"', r"\1", user_text, re.DOTALL')
+    new_text += re.sub(r'[^"]*"([^"]*)"', r"\1", user_text, re.DOTALL)
 
     return new_text
 
