@@ -95,9 +95,12 @@ def java_extract(user_text):
     else:
         new_text = """"""
 
-        for line in user_text.splitlines():
-            new_text += re.sub(
-                '(String sql = ")|(?:\+ ")|(?:" \+)|["]', '', line)
+    full_query = "\n".join(user_text)
+    new_text += re.sub(
+        '(String sql = ")|(?:\+ ")|(?:" \+)|["]', '', full_query)
+    # for line in user_text.splitlines():
+    #     new_text += re.sub(
+    #         '(String sql = ")|(?:\+ ")|(?:" \+)|["]', '', line)
 
     return new_text
 
