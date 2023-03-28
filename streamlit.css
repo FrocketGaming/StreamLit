@@ -155,11 +155,16 @@ iframe {
   color: var(--White);
 }
 
-.st-du {
+[data-baseweb="checkbox"]>span {
+  background-color: var(--Background) !important;
+  border: 1px solid var(--Purple) !important;
+}
+
+[data-baseweb="radio"]>div:first-child {
   background-color: var(--Red) !important;
 }
 
-.st-e2 {
+[data-baseweb="radio"]>div>div {
   background-color: var(--Background) !important;
 }
 
