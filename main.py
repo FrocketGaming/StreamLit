@@ -32,24 +32,24 @@ selected = option_menu(
         "container": {"padding": "0px",
                       "display": "grid",
                       "margin": "0!important",
-                      "background-color": "#23212c"
+                      "background-color": "#212121"
                       },
-        "icon": {"color": "#8bff80", "font-size": "14px"},
+        "icon": {"color": "#bd93f9", "font-size": "14px"},
         "nav-link": {
             "font-size": "14px",
             "text-align": "center",
             "margin": "auto",
-            "background-color": "#23212c",
+            "background-color": "#262626",
             "height": "30px",
             "width": "13rem",
-            "color": "#7970a9",
+            "color": "#edff85",
             "border-radius": "5px"
         },
         "nav-link-selected": {
-            "background-color": "#454158",
+            "background-color": "#212121",
             "font-weight": "300",
             "color": "#f7f8f2",
-            "border": "1px solid #fe80bf"
+            "border": "1px solid #e55381"
         }
     }
 )

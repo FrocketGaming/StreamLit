@@ -1,4 +1,4 @@
-/* Background Color - #23212c
+/* /* Background Color - #23212c
 Comment Color - #7970a9
 Selection Color - #454148
 Foreground Color - #f7f8f2
@@ -11,24 +11,48 @@ Red Color - #ff5555
 Yellow Color - #ffff80 
 ALT Green - #a8c373 */
 body {
-  --Foreground: #f7f8f2;
   --Cyan: #80ffea;
-  --Bright-Green: #8bff80;
   --Orange: #ffc97f;
   --Pink: #ff79c6;
   --Purple: #bd93f9;
-  --Red: #ff5555;
+  --Red: #e55381;
   --Yellow: #ffff80;
-  --Green: #a8c373;
-  --Grey: #808080;
+  --Green: #edff85;
+  --Grey: #262626;
+  --White: #f7f8f2;
+  --Background: #212121;
 }
 
 .language-sql .token.string {
-  color: var(--Purple) !important;
+  color: var(--Green) !important;
 }
 
 .language-json .token.string {
-  color: var(--Cyan);
+  color: var(--Green) !important;
+}
+
+label.div {
+  color: var(--Green) !important;
+}
+
+textarea {
+  background-color: var(--Grey) !important;
+  color: var(--White) !important;
+  border: 2px solid var(--Purple) !important;
+}
+
+textarea:focus {
+  color: var(--White) !important;
+}
+
+textarea:not(:focus) {
+  color: var(--Red) !important;
+}
+
+/* Placeholder text */
+[class^="st-"]::placeholder {
+  color: var(--Green);
+  opacity: .9;
 }
 
 h2 {
@@ -45,9 +69,23 @@ h2 {
 }
 
 /* Body of container */
-.block-container.css-12oz5g7.egzxvld2 {
+.block-container {
   max-width: 80rem;
   padding: 3rem 1rem 10rem;
+  background-color: var(--Background);
+}
+
+header,
+footer {
+  background-color: var(--Background) !important;
+}
+
+.main.css-k1vhr4.egzxvld3 {
+  background-color: var(--Background);
+}
+
+.css-dj9wn5.egzxvld0 {
+  visibility: hidden;
 }
 
 /* Menu width */
@@ -61,11 +99,13 @@ iframe {
 /* code block text  */
 .css-4d0s2q {
   height: 450px;
-  color: var(--Green);
+  color: var(--White);
+  background-color: var(--Background) !important;
+  border: 2px solid var(--Red) !important;
 }
 
 .css-4d0s2q .token.property {
-  color: var(--Purple);
+  color: var(--Grey);
 }
 
 .css-4d0s2q .token.boolean {
@@ -89,8 +129,9 @@ iframe {
 }
 
 /* copy button */
-.css-tj37xy.e10mrw3y2 {
+[class^="css-tj37xy"] {
   color: var(--Red);
+  border: 2px solid var(--Orange) !important;
 }
 
 /* Hide menu button */
@@ -102,21 +143,37 @@ iframe {
 .css-1tceqde.e16nr0p34 {
   padding-top: .5rem;
   font-size: 14px;
-  color: var(--Orange);
+  color: var(--White);
 }
 
-/* Text area */
-/* .stTextArea {
-  padding-top: .6rem !important;
-} */
-
-/* Text area */
-div textarea {
-  color: var(--Foreground) !important;
+/* Raido and Checkbox */
+[class^="css-1djdyxw"] {
+  color: var(--White);
 }
 
-/* Placeholder text */
-[class^="st-"]::placeholder {
-  color: var(--Bright-Green);
-  opacity: .4;
+[class^="st-d6"] {
+  color: var(--White);
+}
+
+.st-du {
+  background-color: var(--Red) !important;
+}
+
+.st-e2 {
+  background-color: var(--Background) !important;
+}
+
+.css-10trblm.e16nr0p30 {
+  color: var(--Green);
+}
+
+button {
+  color: var(--Green) !important;
+  background-color: var(--Grey) !important;
+  border: 1px solid var(--Purple) !important;
+}
+
+button:hover {
+  color: var(--White) !important;
+  border: 1px solid var(--Red) !important;
 }
