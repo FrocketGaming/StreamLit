@@ -146,14 +146,12 @@ iframe {
   color: var(--White);
 }
 
-/* Raido and Checkbox */
-[class^="css-1djdyxw"] {
+/* Radio and Checkbox */
+
+label>div:nth-child(3) {
   color: var(--White);
 }
 
-[class^="st-d6"] {
-  color: var(--White);
-}
 
 [data-baseweb="checkbox"]>span {
   background-color: var(--Background) !important;
