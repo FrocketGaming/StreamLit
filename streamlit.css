@@ -98,7 +98,7 @@ iframe {
 
 /* code block text  */
 [data-testid="stMarkdownContainer"]>div>pre {
-  height: 451px;
+  height: 450px;
   color: var(--White);
   background-color: var(--Background) !important;
   border: 2px solid var(--Red) !important;
