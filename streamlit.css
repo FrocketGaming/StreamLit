@@ -35,6 +35,14 @@ label.div {
   color: var(--Green) !important;
 }
 
+.main {
+  background-color: var(--Background) !important;
+}
+
+footer {
+  visibility: hidden !important;
+}
+
 textarea {
   background-color: var(--Grey) !important;
   color: var(--White) !important;
