@@ -39,6 +39,10 @@ label.div {
   background-color: var(--Background) !important;
 }
 
+p {
+  color: #fff !important;
+}
+
 footer {
   visibility: hidden !important;
 }
